@@ -1,5 +1,9 @@
 # -*- coding: UTF-8 -*-
-"""PyRamen Homework Starter."""
+"""PyRamen Homework Starter.
+CURRENTLY HAVING TROUBLE ON LINE 84 - 115
+TROUBLE CONVERTING THE PRICE TO AN INT
+ALSO FAILING TO PICK UP ON COST ON LINE 97
+"""
 
 # @TODO: Import libraries
 import csv
@@ -26,22 +30,14 @@ with open(menu_filepath, 'r') as file:
 
 
 
-
-
-
-
 # @TODO: Read in the sales data into the sales list
 with open(sales_filepath, 'r') as file:
     csvFile = csv.reader(file)
     for line in csvFile:
-        print(line)
+        # print(line)
         sales.append(line)
 
 # print(sales)
-
-
-
-
 
 
 
@@ -58,7 +54,6 @@ for sale_row in sales:
 
 
 
-
     # Line_Item_ID,Date,Credit_Card_Number,Quantity,Menu_Item
     # @TODO: Initialize sales data variables
     Line_Item_ID = sale_row[0]
@@ -72,7 +67,12 @@ for sale_row in sales:
     # If the item value not in the report, add it as a new entry with initialized metrics
     # Naming convention allows the keys to be ordered in logical fashion, count, revenue, cost, profit
     if Menu_Item not in report:
-        report[Menu_Item] = {'01-count': 0, '02-revenue': 0, '03-cogs': 0, '04-profit': 0}
+        report[Menu_Item] = {
+            '01-count': 0, 
+            '02-revenue': 0, 
+            '03-cogs': 0, 
+            '04-profit': 0
+        }
 
 
 
@@ -92,20 +92,29 @@ for sale_row in sales:
         Category = menu_row[1]
         Description = menu_row[2]
         Price = menu_row[3]
-        Cost = menu_row[4]
+        print(f"this is the price: {Price}, type = {type(Price)}")
+        # price_int_format = float(Price)
+        # Cost = int(menu_row[4])
 
+        print(Item)
+        print(Category)
+        print(Description)
+        # print(f"price is: {Price}, cost is: {Cost}. Profit is: {Price - Cost}")
+        # print(type(price_int_format))
+        # print(Cost)                                                                                    )
 
 
 
         # @TODO: Calculate profit of each item in the menu data
-        proft = Price - Cost
+        # proft = Price - Cost
 
 
         # @TODO: If the item value in our sales data is equal to the any of the items in the menu, then begin tracking metrics for that item
         if Menu_Item == Item:
 
             # @TODO: Print out matching menu data
-            print(Item)
+            # print(Item)
+            print("")
 
 
 
