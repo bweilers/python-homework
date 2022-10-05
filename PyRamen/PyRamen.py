@@ -70,8 +70,8 @@ for sale_row in sales:
             # print(Item)
             Category = menu_row[1]
             Description = menu_row[2]
-            Price = int(menu_row[3])
-            Cost = int(menu_row[4])
+            Price = float(menu_row[3])
+            Cost = float(menu_row[4])
             Profit = Price - Cost
 
             # Cumulatively adds the values to the corresponding metrics 
@@ -80,7 +80,7 @@ for sale_row in sales:
             report[Menu_Item]['03-cogs'] += Cost * Quantity
             report[Menu_Item]['04-profit'] += Profit * Quantity
 
-        # Passes/does nothing in case of no match
+        # Does nothing in case of no match
         else:
             pass
             
@@ -95,4 +95,5 @@ print(f"Total records in sales data is: {row_count}.\nSee 'Results.txt' for full
 # Writes out report to a text file (won't appear on the command line output)
 with open("Results.txt", "w") as file:
     for item in report:
-    file.write(str(report))
+        line = str(report[item])
+        file.write(f"{item} {line}\n")
